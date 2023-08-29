@@ -31,6 +31,7 @@ public class DBTest {
 
     @Order(1)
     @Test
+    @Tag(Config.db)
     public void dbTest() {
         Assertions.assertAll(
                 () -> Assertions.assertNotNull(con),
@@ -40,6 +41,7 @@ public class DBTest {
 
     @Order(2)
     @Test
+    @Tag(Config.db)
     public void createTableTest() {
         String sql = "CREATE TABLE IF NOT EXISTS customer ( \n" +
                 "   id INT NOT NULL, \n" +
@@ -60,6 +62,7 @@ public class DBTest {
 
     @Order(3)
     @RepeatedTest(10)
+    @Tag(Config.rest)
     public void insertTest() throws SQLException {
         String sql = "insert into customer (name, email, password) values (?, ?, ?)";
         PreparedStatement pre = con.prepareStatement(sql);
@@ -72,6 +75,7 @@ public class DBTest {
 
     @Order(4)
     @Test
+    @Tag(Config.secuirty)
     public void customerList() {
         List<Customer> ls = custometService.customerList(con);
         Assertions.assertEquals(ls.size() > 1750, true, "Customer Size not equals 1750");

@@ -26,6 +26,7 @@ public class GlabalInfoTest {
     @Order(1)
     @Test
     @DisplayName("A test")
+    @Tag("security")
     public void aTest() {
         System.out.println("aTest call");
     }
@@ -33,6 +34,7 @@ public class GlabalInfoTest {
     @Order(2)
     @Test
     @DisplayName("2 params int sum")
+    @Tag(Config.rest)
     public void sumTest() {
         int sum = util.sum(100, 50);
         Assertions.assertEquals(sum, 151, "Sum Not Equals");
@@ -44,6 +46,7 @@ public class GlabalInfoTest {
     @Order(3)
     @Test
     @DisplayName("random test")
+    @Tag(Config.secuirty)
     public void test_1() {
         util.sum(44,33);
         System.out.println( util.hashCode() );

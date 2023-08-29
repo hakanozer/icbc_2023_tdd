@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Timeout;
 
@@ -8,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 public class TimeOutTest {
 
     @Test
+    @Tag("db")
     public void timeTest() {
         try {
             Thread.sleep(3000);

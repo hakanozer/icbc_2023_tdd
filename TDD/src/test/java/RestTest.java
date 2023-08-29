@@ -1,9 +1,8 @@
 import models.JWTModel;
 import models.ProductModel;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
+import org.junit.Ignore;
+import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.condition.EnabledIf;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.junit.jupiter.params.provider.EnumSource;
@@ -31,6 +30,7 @@ public class RestTest {
 
     @ParameterizedTest
     @MethodSource("users")
+    @Tag(Config.rest)
     public void loginTest(JWTModel jwtModel) throws IOException {
 
         Response<JWTModel> response = service.login(jwtModel).execute();
@@ -88,6 +88,8 @@ public class RestTest {
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3,4,5,6,7,8,900})
+    @Tag(Config.rest)
+    @Disabled
     public void singleTest(int id) throws IOException {
         Call<ProductModel> modelCall = service.singleProduct(id);
         Response<ProductModel> modelResponse = modelCall.execute();
@@ -98,5 +100,14 @@ public class RestTest {
         );
     }
 
+    @Test
+    @EnabledIf("status")
+    public void ifTest() {
+        System.out.println("ifTest call");
+    }
+
+    public boolean status() {
+        return service != null ? false : false;
+    }
 
 }

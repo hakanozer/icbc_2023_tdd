@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -8,6 +9,7 @@ public class ThreadTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1.jpg","2.jpg","3.jpg","4.jpg"})
+    @Tag("db")
     public void threadTest( String path ) {
         try {
             Action action = new Action(path);

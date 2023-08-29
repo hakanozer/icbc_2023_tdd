@@ -41,6 +41,7 @@ public class FileTest {
 
     @Test
     @Order(1)
+    @Tag(Config.db)
     public void fileWriteTest() {
         try {
             FileWriter writer = new FileWriter(file, true);
@@ -55,6 +56,7 @@ public class FileTest {
 
     @Test
     @Order(2)
+    @Tag(Config.secuirty)
     public void fileReadTest() {
         try {
             Scanner scanner = new Scanner(file);
